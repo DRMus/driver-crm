@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Предотвращает горизонтальный скролл на мобильных */
+  overflow-x: hidden;
+  /* Улучшает рендеринг на мобильных */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Предотвращает выделение текста при долгом нажатии (опционально) */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Предотвращает горизонтальный скролл */
+  overflow-x: hidden;
+  /* Улучшает производительность на мобильных */
+  -webkit-overflow-scrolling: touch;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Улучшения для touch-устройств */
+button,
+a,
+input,
+select,
+textarea {
+  /* Увеличиваем область нажатия */
+  touch-action: manipulation;
+}
+
+/* Предотвращает zoom при фокусе на input (iOS) */
+input,
+select,
+textarea {
+  font-size: 16px !important;
+}
+
+@media (min-width: 600px) {
+  input,
+  select,
+  textarea {
+    font-size: inherit;
+  }
+}

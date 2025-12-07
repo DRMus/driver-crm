@@ -1,0 +1,9 @@
+# SSL Certificates (локальные сертификаты для разработки)
+certs/*.key
+certs/*.crt
+certs/*.csr
+certs/*.conf
+!certs/.gitkeep
+
+react
+scripts
