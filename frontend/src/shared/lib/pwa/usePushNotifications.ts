@@ -60,9 +60,12 @@ export const usePushNotifications = () => {
       const registration = await navigator.serviceWorker.ready;
 
       // Создаем подписку
+      const keyArray = urlBase64ToUint8Array(publicKey);
+      // Создаем новый ArrayBuffer для правильного типа
+      const keyBuffer = new Uint8Array(keyArray).buffer;
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(publicKey),
+        applicationServerKey: keyBuffer,
       });
 
       // Отправляем подписку на сервер

@@ -9,7 +9,7 @@ import {
   ListItem,
 } from '@mui/material';
 import { Repair } from '@/entities/repair';
-import { formatCurrency } from '../../list/utils';
+import { formatCurrency } from '@/shared/lib/utils';
 
 interface FinancialInfoCardProps {
   repair: Repair;

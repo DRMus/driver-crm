@@ -1,4 +1,4 @@
-import { Box, Chip, Tooltip } from '@mui/material';
+import { Chip, Tooltip } from '@mui/material';
 import { CloudOff, Cloud, Sync } from '@mui/icons-material';
 import { useOfflineStore } from '@/shared/lib/store';
 

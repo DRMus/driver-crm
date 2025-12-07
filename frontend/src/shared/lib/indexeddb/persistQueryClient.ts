@@ -1,5 +1,4 @@
 import { QueryClient } from '@tanstack/react-query';
-import { db } from './database';
 
 const QUERY_CACHE_KEY = 'react-query-cache';
 

@@ -30,7 +30,7 @@ import { queryKeys } from '@/shared/lib/react-query';
 import { DELETE_CONFIRM_MESSAGE } from './constants';
 import { useSafeQuery } from '@/shared/lib/hooks';
 import { repairApi } from '@/entities/repair';
-import { formatCurrency } from '@/features/repairs/list/utils';
+import { formatCurrency } from '@/shared/lib/utils';
 
 export const VehicleDetail = () => {
   const navigate = useNavigate();

@@ -5,7 +5,7 @@ import { CreateVehicleFormData } from '../schemas';
 
 interface NewClientFormProps {
   control: Control<CreateVehicleFormData>;
-  errors?: FieldErrors<CreateVehicleFormData['newClient']>;
+  errors?: FieldErrors<CreateVehicleFormData>['newClient'];
 }
 
 export const NewClientForm = ({ control, errors }: NewClientFormProps) => {

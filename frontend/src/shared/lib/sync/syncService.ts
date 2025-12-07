@@ -50,11 +50,12 @@ export class SyncService {
     });
 
     // Регистрируем Background Sync, если доступен
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && 'sync' in ServiceWorkerRegistration.prototype) {
       try {
         const registration = await navigator.serviceWorker.ready;
-        if (registration.sync) {
-          await registration.sync.register('sync-data');
+        const syncManager = (registration as any).sync;
+        if (syncManager) {
+          await syncManager.register('sync-data');
         }
       } catch (error) {
         console.warn('Background Sync не доступен:', error);
@@ -104,9 +105,9 @@ export class SyncService {
       const response = await apiClient.post<SyncResponse>('/sync', batch);
 
       // Обрабатываем результаты
-      await this.processSyncResults(pending, response);
+      await this.processSyncResults(pending, response.data);
 
-      return response;
+      return response.data;
     } catch (error) {
       // Увеличиваем счетчик попыток для всех мутаций
       for (const mutation of pending) {
@@ -172,7 +173,7 @@ export class SyncService {
           id: serverId,
           _tempId: undefined,
           _syncStatus: 'synced',
-          updatedAt: serverVersion ? new Date(serverVersion) : new Date(),
+          updatedAt: serverVersion ? serverVersion : new Date().toISOString(),
         });
         break;
       case 'vehicle':
@@ -180,7 +181,7 @@ export class SyncService {
           id: serverId,
           _tempId: undefined,
           _syncStatus: 'synced',
-          updatedAt: serverVersion ? new Date(serverVersion) : new Date(),
+          updatedAt: serverVersion ? serverVersion : new Date().toISOString(),
         });
         break;
       case 'repair':
@@ -188,7 +189,7 @@ export class SyncService {
           id: serverId,
           _tempId: undefined,
           _syncStatus: 'synced',
-          updatedAt: serverVersion ? new Date(serverVersion) : new Date(),
+          updatedAt: serverVersion ? serverVersion : new Date().toISOString(),
         });
         break;
       case 'repair-task':
@@ -196,7 +197,7 @@ export class SyncService {
           id: serverId,
           _tempId: undefined,
           _syncStatus: 'synced',
-          updatedAt: serverVersion ? new Date(serverVersion) : new Date(),
+          updatedAt: serverVersion ? serverVersion : new Date().toISOString(),
         });
         break;
       case 'part':
@@ -204,7 +205,7 @@ export class SyncService {
           id: serverId,
           _tempId: undefined,
           _syncStatus: 'synced',
-          updatedAt: serverVersion ? new Date(serverVersion) : new Date(),
+          updatedAt: serverVersion ? serverVersion : new Date().toISOString(),
         });
         break;
     }

@@ -11,7 +11,7 @@ import {
 } from "@mui/icons-material";
 import { useRepairsList } from "./useRepairsList";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { formatCurrency } from "./utils";
+import { formatCurrency } from '@/shared/lib/utils';
 import { PageLayout } from "@/shared/ui/PageLayout";
 import { ListWithLoader } from "@/shared/ui/ListWithLoader";
 import { EMPTY_LIST_MESSAGE, ERROR_MESSAGE } from "./constants";

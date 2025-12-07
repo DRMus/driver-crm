@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 export const ClientsList = () => {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
-  const { clients, isLoading, error, refetch } = useClientsList({
+  const { clients, isLoading, error } = useClientsList({
     search: search || undefined,
   });
 
@@ -55,11 +55,11 @@ export const ClientsList = () => {
         </CardContent>
       </Card>
 
-      {error && (
+      {error ? (
         <Alert severity="error" sx={{ mb: 2 }}>
-          Ошибка при загрузке клиентов
+          {String(error)}
         </Alert>
-      )}
+      ) : null}
 
       {isLoading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', py: 4 }}>

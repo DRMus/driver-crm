@@ -10,10 +10,10 @@ export const usePWAUpdate = () => {
     needRefresh: swNeedRefresh,
     updateServiceWorker,
   } = useRegisterSW({
-    onRegistered(r) {
+    onRegistered(r: ServiceWorkerRegistration | undefined) {
       console.log('Service Worker зарегистрирован:', r);
     },
-    onRegisterError(error) {
+    onRegisterError(error: Error) {
       console.error('Ошибка регистрации Service Worker:', error);
     },
     onNeedRefresh() {
