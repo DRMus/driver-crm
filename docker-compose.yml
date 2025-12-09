@@ -32,6 +32,10 @@ services:
       DB_PASSWORD: postgres
       DB_DATABASE: driver_crm
       FRONTEND_URL: http://localhost:3000
+      # Supabase Configuration (optional - uncomment and set values)
+      # SUPABASE_URL: ${SUPABASE_URL}
+      # SUPABASE_ANON_KEY: ${SUPABASE_ANON_KEY}
+      # SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
     ports:
       - "4000:4000"
     depends_on:

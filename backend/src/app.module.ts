@@ -13,21 +13,23 @@ import { SettingsModule } from './settings/settings.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { AccountingModule } from './accounting/accounting.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { SupabaseModule } from './supabase/supabase.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    // SupabaseModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DB_HOST', 'localhost'),
+        host: configService.get('DB_HOST', 'aws-1-eu-west-2.pooler.supabase.com'),
         port: configService.get<number>('DB_PORT', 5432),
-        username: configService.get('DB_USERNAME', 'postgres'),
-        password: configService.get('DB_PASSWORD', 'postgres'),
-        database: configService.get('DB_DATABASE', 'driver_crm'),
+        username: configService.get('DB_USERNAME', 'postgres.rtcmetwvrrsqeklwwbij'),
+        password: configService.get('DB_PASSWORD', 'tobbackno73ru'),
+        database: configService.get('DB_DATABASE', 'postgres'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: configService.get('NODE_ENV') === 'development',
