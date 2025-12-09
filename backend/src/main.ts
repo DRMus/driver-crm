@@ -23,7 +23,7 @@ async function bootstrap() {
   );
 
   // CORS
-  const frontendUrl = process.env.FRONTEND_URL || (httpsOptions ? 'https://localhost:3000' : 'http://localhost:3000');
+  const frontendUrl = process.env.FRONTEND_URL || "*";
   app.enableCors({
     origin: frontendUrl,
     credentials: true,
