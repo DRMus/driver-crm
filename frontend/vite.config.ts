@@ -22,10 +22,15 @@ function getHttpsOptions() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true, // Включаем PWA в режиме разработки
+        type: 'module', // Используем ES modules для dev
+      },
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
         name: 'Driver CRM',
@@ -35,8 +40,8 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: process.env.VITE_BASE_PATH || '/',
+        scope: process.env.VITE_BASE_PATH || '/',
         icons: [
           {
             src: 'pwa-192x192.png',
